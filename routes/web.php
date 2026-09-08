@@ -17,6 +17,7 @@ Route::get('/sitemap.xml', function () {
 
 // Admin Authentication
 Route::get('/admin/login', [AdminController::class, 'loginForm'])->name('admin.login');
+Route::get('/login', [AdminController::class, 'loginForm'])->name('login');
 Route::post('/admin/login', [AdminController::class, 'login'])->middleware('throttle:10,1')->name('admin.login.submit');
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
