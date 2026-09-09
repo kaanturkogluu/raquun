@@ -31,9 +31,19 @@
     <meta name="twitter:description" content="Kendi pazar yerimizi kuruyoruz. İşletmeniz için hazır kalıplara bağımlı olmayan özel e-ticaret, B2B bayi portalları ve kurumsal CMS altyapıları geliştiriyoruz. 1 yıl ücretsiz teknik destek dahil.">
     <meta name="twitter:image" content="{{ asset('images/raquun-mascot.jpg') }}">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="{{ asset('images/raquun-logo.jpg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/raquun-logo.jpg') }}">
+    <!-- Favicon & Icons for Google Search, Android, Apple & Browsers -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('favicon-48x48.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{{ asset('favicon-144x144.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('favicon-144x144.png') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
 
     <!-- Schema.org JSON-LD Structured Data for Google -->
     <script type="application/ld+json">
