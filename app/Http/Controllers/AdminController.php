@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\TargetClient;
 use App\Models\InstagramLead;
+use App\Models\InstagramCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -78,11 +79,13 @@ class AdminController extends Controller
 
         $projects = Project::orderBy('order_num')->orderByDesc('created_at')->get();
         $clients = TargetClient::orderByDesc('created_at')->get();
-        $instagramLeads = InstagramLead::orderByRaw("CASE priority WHEN 'yuksek' THEN 1 WHEN 'orta' THEN 2 ELSE 3 END")
+        $instagramCategories = InstagramCategory::withCount('leads')->orderBy('name')->get();
+        $instagramLeads = InstagramLead::with('category')
+                                       ->orderByRaw("CASE priority WHEN 'yuksek' THEN 1 WHEN 'orta' THEN 2 ELSE 3 END")
                                        ->orderByDesc('created_at')
                                        ->get();
 
-        return view('admin.dashboard', compact('stats', 'activeTab', 'projects', 'clients', 'instagramLeads'));
+        return view('admin.dashboard', compact('stats', 'activeTab', 'projects', 'clients', 'instagramLeads', 'instagramCategories'));
     }
 
     // ==========================================
@@ -197,6 +200,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'username' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:instagram_categories,id',
             'profile_url' => 'nullable|string|max:500',
             'follower_count' => 'nullable|string|max:100',
             'sector' => 'nullable|string|max:255',
@@ -212,6 +216,7 @@ class AdminController extends Controller
         if (empty($validated['profile_url'])) {
             $validated['profile_url'] = 'https://instagram.com/' . $validated['username'];
         }
+        $validated['category_id'] = $request->filled('category_id') ? (int)$request->input('category_id') : null;
 
         InstagramLead::create($validated);
 
@@ -223,6 +228,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'username' => 'required|string|max:255',
+            'category_id' => 'nullable|exists:instagram_categories,id',
             'profile_url' => 'nullable|string|max:500',
             'follower_count' => 'nullable|string|max:100',
             'sector' => 'nullable|string|max:255',
@@ -234,6 +240,10 @@ class AdminController extends Controller
         ]);
 
         $validated['username'] = ltrim($validated['username'], '@');
+        if (empty($validated['profile_url'])) {
+            $validated['profile_url'] = 'https://instagram.com/' . $validated['username'];
+        }
+        $validated['category_id'] = $request->filled('category_id') ? (int)$request->input('category_id') : null;
 
         $lead->update($validated);
 
@@ -246,5 +256,36 @@ class AdminController extends Controller
         $lead->delete();
         return redirect()->route('admin.dashboard', ['tab' => 'instagram'])
                          ->with('success', 'Instagram hesabı listeden silindi.');
+    }
+
+    public function storeInstagramCategory(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:100|unique:instagram_categories,name',
+            'color' => 'nullable|string|max:30',
+        ], [
+            'name.required' => 'Kategori adı zorunludur.',
+            'name.unique' => 'Bu isimde bir kategori zaten kayıtlı.',
+        ]);
+
+        $category = InstagramCategory::create([
+            'name' => trim($validated['name']),
+            'color' => $validated['color'] ?: '#6366f1',
+        ]);
+
+        if ($request->wantsJson() || $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kategori başarıyla eklendi.',
+                'category' => [
+                    'id' => $category->id,
+                    'name' => $category->name,
+                    'color' => $category->color,
+                ],
+            ]);
+        }
+
+        return redirect()->route('admin.dashboard', ['tab' => 'instagram'])
+                         ->with('success', 'Yeni kategori oluşturuldu: ' . $category->name);
     }
 }

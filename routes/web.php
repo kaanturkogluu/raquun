@@ -40,4 +40,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('/instagram', [AdminController::class, 'storeInstagram'])->name('instagram.store');
     Route::put('/instagram/{lead}', [AdminController::class, 'updateInstagram'])->name('instagram.update');
     Route::delete('/instagram/{lead}', [AdminController::class, 'deleteInstagram'])->name('instagram.delete');
+    Route::post('/instagram/categories', [AdminController::class, 'storeInstagramCategory'])->name('instagram.categories.store');
 });

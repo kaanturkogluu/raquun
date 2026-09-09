@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Predefined Instagram Categories
+        $this->call(InstagramCategorySeeder::class);
+
         // 1. Authorized Founders / Admins
         User::firstOrCreate(
             ['email' => 'kaantrrkoglu@gmail.com'],

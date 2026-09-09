@@ -632,6 +632,218 @@
             border-color: var(--red);
         }
 
+        /* Edit Button */
+        .btn-edit {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid #bfdbfe;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-edit:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        /* Quick Category Button */
+        .btn-quick-cat {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: var(--text-heading);
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.15s;
+        }
+
+        .btn-quick-cat:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: #bfdbfe;
+        }
+
+        /* Category Filter Pills */
+        .cat-pill-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            padding: 12px 18px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .cat-pill:hover {
+            background: var(--primary-light);
+            border-color: #bfdbfe;
+            color: var(--primary);
+        }
+
+        .cat-pill.active {
+            background: var(--text-heading);
+            color: #ffffff;
+            border-color: var(--text-heading);
+        }
+
+        .cat-pill-count {
+            font-size: 0.72rem;
+            padding: 1px 6px;
+            border-radius: 9999px;
+            background: rgba(0,0,0,0.06);
+        }
+
+        .cat-pill.active .cat-pill-count {
+            background: rgba(255,255,255,0.25);
+            color: #ffffff;
+        }
+
+        /* Modals */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-dialog {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            animation: modalScaleUp 0.2s ease-out;
+        }
+
+        @keyframes modalScaleUp {
+            from { transform: scale(0.96); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 10;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            background: #f8fafc;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        /* Color Swatches for Category Creation */
+        .color-swatch-label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .color-swatch-label input[type="radio"] {
+            display: none;
+        }
+
+        .color-swatch-label span {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 2px solid transparent;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .color-swatch-label input[type="radio"]:checked + span {
+            transform: scale(1.15);
+            border-color: #0f172a;
+            box-shadow: 0 0 0 2px #ffffff inset;
+        }
+
+        /* Toast */
+        .admin-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: toastSlideUp 0.2s ease-out;
+        }
+
+        @keyframes toastSlideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         /* Note bubble inside table */
         .note-bubble {
             background: #f8fafc;
@@ -1178,7 +1390,7 @@
                 <div class="section-header-bar">
                     <div class="section-header-title">
                         <h1>İncelenecek Instagram Hesapları & Satış Fırsatları</h1>
-                        <p>Instagram'da yüksek etkileşimi olan fakat web sitesi/sepeti eksik işletmeleri kaydedip analiz edin.</p>
+                        <p>Instagram'da yüksek etkileşimi olan fakat web sitesi/sepeti eksik işletmeleri kaydedip kategorilerine göre analiz edin.</p>
                     </div>
                     <button type="button" class="btn-toggle-form" onclick="toggleForm('instagramFormCard')">
                         <span id="instagramFormBtnIcon">➕</span>
@@ -1201,17 +1413,32 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Takipçi Sayısı</label>
-                                <input type="text" name="follower_count" class="form-control" placeholder="Örn: 24.5K veya 50.000">
+                                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2px;">
+                                    <label class="form-label" style="margin-bottom:0;">Kategori (Default: Null)</label>
+                                    <button type="button" class="btn-quick-cat" onclick="openQuickCategoryModal('instagramAddCategorySelect')">
+                                        ➕ Yeni Kategori
+                                    </button>
+                                </div>
+                                <select name="category_id" id="instagramAddCategorySelect" class="form-control">
+                                    <option value="">(Kategorisiz - Null)</option>
+                                    @foreach ($instagramCategories as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Sektör / Niş</label>
-                                <input type="text" name="sector" class="form-control" placeholder="Örn: Butik Giyim, Doğal Kozmetik, Gurme Gıda">
+                                <label class="form-label">Takipçi Sayısı</label>
+                                <input type="text" name="follower_count" class="form-control" placeholder="Örn: 24.5K veya 50.000">
                             </div>
                         </div>
 
                         <div class="form-grid-3">
+                            <div class="form-group">
+                                <label class="form-label">Sektör / Niş</label>
+                                <input type="text" name="sector" class="form-control" placeholder="Örn: Butik Giyim, Doğal Kozmetik, Gurme Gıda">
+                            </div>
+
                             <div class="form-group">
                                 <label class="form-label">Mevcut Web / Sepet Durumu</label>
                                 <input type="text" name="current_website" class="form-control" placeholder="Örn: Sadece Shopier / Bio'da WhatsApp / Sitesi Yok">
@@ -1225,7 +1452,9 @@
                                     <option value="dusuk">Düşük Öncelik</option>
                                 </select>
                             </div>
+                        </div>
 
+                        <div class="form-grid-3">
                             <div class="form-group">
                                 <label class="form-label">İletişim / Outreach Durumu *</label>
                                 <select name="outreach_status" class="form-control" required>
@@ -1238,17 +1467,22 @@
                                     <option value="pasif">✕ Pasif / İlgilenmedi</option>
                                 </select>
                             </div>
+
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label class="form-label">Özel Profil URL'si (Opsiyonel)</label>
+                                <input type="text" name="profile_url" class="form-control" placeholder="Boş bırakılırsa otomatik https://instagram.com/kullaniciadi oluşturulur">
+                            </div>
                         </div>
 
                         <div class="form-grid-2">
                             <div class="form-group">
                                 <label class="form-label">Tespit Edilen Eksiklik / Satış Fırsatı *</label>
-                                <textarea name="problem_opportunity" class="form-control" placeholder="Örn: Bio'da sadece WhatsApp var, siparişler karışıyor. Shopier'e yüksek komisyon ödüyorlar; bağımsız 60.000 TL'lik e-ticaret paketi tam ihtiyaçları." required></textarea>
+                                <textarea name="problem_opportunity" class="form-control" rows="3" placeholder="Örn: Bio'da sadece WhatsApp var, siparişler karışıyor. Shopier'e yüksek komisyon ödüyorlar; bağımsız 60.000 TL'lik e-ticaret paketi tam ihtiyaçları." required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Detaylı İnceleme & DM Notları</label>
-                                <textarea name="detailed_notes" class="form-control" placeholder="Atılacak DM taslağı, işletmenin en çok satan ürünü, Reels etkileşimi vb."></textarea>
+                                <textarea name="detailed_notes" class="form-control" rows="3" placeholder="Atılacak DM taslağı, işletmenin en çok satan ürünü, Reels etkileşimi vb."></textarea>
                             </div>
                         </div>
 
@@ -1263,15 +1497,41 @@
                     </form>
                 </div>
 
+                <!-- Category Filter Pills Bar (Kategoriler üzerinden filtreleme & arama) -->
+                <div class="cat-pill-container" id="categoryPillsContainer">
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-right:4px;">🏷️ Kategoriye Göre:</span>
+                    <button type="button" class="cat-pill active" onclick="setCategoryFilter('', this)">
+                        Tümü <span class="cat-pill-count">{{ $instagramLeads->count() }}</span>
+                    </button>
+                    <button type="button" class="cat-pill" onclick="setCategoryFilter('__null__', this)">
+                        Kategorisiz <span class="cat-pill-count">{{ $instagramLeads->whereNull('category_id')->count() }}</span>
+                    </button>
+                    @foreach ($instagramCategories as $cat)
+                        <button type="button" class="cat-pill" data-cat-id="{{ $cat->id }}" onclick="setCategoryFilter('{{ $cat->id }}', this)">
+                            <span style="width:8px; height:8px; border-radius:50%; background:{{ $cat->color }}; display:inline-block;"></span>
+                            {{ $cat->name }} <span class="cat-pill-count">{{ $cat->leads_count }}</span>
+                        </button>
+                    @endforeach
+                </div>
+
                 <!-- Instagram Data Table -->
                 <div class="table-card">
                     <div class="table-top-bar">
                         <div class="table-count-badge">
-                            İncelenen Instagram Hesapları ({{ $instagramLeads->count() }})
+                            İncelenen Instagram Hesapları (<span id="instagramFilteredCount">{{ $instagramLeads->count() }}</span>)
                         </div>
-                        <div class="table-search-box">
-                            <span class="table-search-icon">🔍</span>
-                            <input type="text" id="instagramSearch" class="table-search-input" placeholder="Hesaplarda veya sektörde ara..." onkeyup="filterTable('instagramSearch', 'instagramTable')">
+                        <div style="display:flex; align-items:center; gap:12px; flex:1; justify-content:flex-end; max-width:640px;">
+                            <select id="instagramCategorySelectFilter" class="table-search-input" style="max-width:200px;" onchange="syncCategoryDropdown(this.value)">
+                                <option value="">Tüm Kategoriler</option>
+                                <option value="__null__">Kategorisiz (Null)</option>
+                                @foreach ($instagramCategories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="table-search-box">
+                                <span class="table-search-icon">🔍</span>
+                                <input type="text" id="instagramSearch" class="table-search-input" placeholder="Hesap, kategori veya sektörde ara..." onkeyup="filterInstagramTable()">
+                            </div>
                         </div>
                     </div>
 
@@ -1280,6 +1540,7 @@
                             <thead>
                                 <tr>
                                     <th>Instagram Hesabı</th>
+                                    <th>Kategori</th>
                                     <th>Takipçi & Sektör</th>
                                     <th>Mevcut Web Durumu</th>
                                     <th>Tespit Edilen Fırsat</th>
@@ -1290,11 +1551,25 @@
                             </thead>
                             <tbody>
                                 @forelse ($instagramLeads as $lead)
-                                    <tr>
+                                    <tr data-instagram-row="true"
+                                        data-category-id="{{ $lead->category_id ?? '' }}"
+                                        data-category-name="{{ $lead->category ? $lead->category->name : 'kategorisiz' }}">
                                         <td>
                                             <a href="{{ $lead->profile_url ?: 'https://instagram.com/' . $lead->username }}" target="_blank" rel="noopener" style="color:var(--primary); font-weight:800; font-size:0.95rem;">
                                                 @ {{ $lead->username }} ↗
                                             </a>
+                                        </td>
+                                        <td>
+                                            @if ($lead->category)
+                                                <span class="badge" style="background: {{ $lead->category->color }}18; color: {{ $lead->category->color }}; border: 1px solid {{ $lead->category->color }}40; font-weight:700;">
+                                                    <span style="width:7px; height:7px; border-radius:50%; background:{{ $lead->category->color }}; display:inline-block; margin-right:4px;"></span>
+                                                    {{ $lead->category->name }}
+                                                </span>
+                                            @else
+                                                <span class="badge badge-gray" style="color:var(--text-muted); font-weight:500; font-style:italic;">
+                                                    Kategorisiz
+                                                </span>
+                                            @endif
                                         </td>
                                         <td>
                                             <strong style="color:var(--text-heading);">{{ $lead->follower_count ?: '-' }}</strong>
@@ -1304,7 +1579,7 @@
                                             <span class="badge badge-gray">{{ $lead->current_website ?: 'Bilinmiyor' }}</span>
                                         </td>
                                         <td>
-                                            <div style="font-size:0.85rem; color:var(--text-heading); max-width:280px; line-height:1.45;">
+                                            <div style="font-size:0.85rem; color:var(--text-heading); max-width:260px; line-height:1.45;">
                                                 {{ $lead->problem_opportunity ?: '-' }}
                                             </div>
                                         </td>
@@ -1337,17 +1612,22 @@
                                                 {{ $lead->detailed_notes ?: 'Detaylı analiz notu girilmedi.' }}
                                             </div>
                                         </td>
-                                        <td style="text-align:right;">
-                                            <form action="{{ route('admin.instagram.delete', $lead) }}" method="POST" onsubmit="return confirm('@ {{ $lead->username }} hesabını silmek istediğinize emin misiniz?');" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn-delete">Sil</button>
-                                            </form>
+                                        <td style="text-align:right; white-space:nowrap;">
+                                            <div style="display:inline-flex; align-items:center; gap:6px;">
+                                                <button type="button" class="btn-edit" onclick='openEditInstagramModal(@json($lead))'>
+                                                    ✏ Düzenle
+                                                </button>
+                                                <form action="{{ route('admin.instagram.delete', $lead) }}" method="POST" onsubmit="return confirm('@ {{ $lead->username }} hesabını silmek istediğinize emin misiniz?');" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-delete">Sil</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" style="text-align:center; padding:48px; color:var(--text-muted);">
+                                        <td colspan="8" style="text-align:center; padding:48px; color:var(--text-muted);">
                                             Henüz incelenecek Instagram hesabı eklenmedi. Yukarıdaki butona basarak ilk hesabı ekleyebilirsiniz.
                                         </td>
                                     </tr>
@@ -1358,6 +1638,157 @@
                 </div>
             @endif
         </main>
+    </div>
+
+    <!-- ====================================================================
+         MODAL 1: EDIT INSTAGRAM LEAD (DÜZENLEME MODALI)
+         ==================================================================== -->
+    <div id="editInstagramModal" class="modal-backdrop">
+        <div class="modal-dialog" style="max-width: 780px;">
+            <div class="modal-header">
+                <h3 style="font-size:1.15rem; font-weight:800; color:var(--text-heading); display:flex; align-items:center; gap:8px;">
+                    ✏️ Instagram Hesabı Düzenle — @<span id="editLeadUsernameTitle"></span>
+                </h3>
+                <button type="button" onclick="closeEditInstagramModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+            </div>
+            <form id="editInstagramForm" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="form-grid-3">
+                        <div class="form-group">
+                            <label class="form-label">Instagram Kullanıcı Adı (@) *</label>
+                            <input type="text" name="username" id="edit_username" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2px;">
+                                <label class="form-label" style="margin-bottom:0;">Kategori (Default: Null)</label>
+                                <button type="button" class="btn-quick-cat" onclick="openQuickCategoryModal('edit_category_id')">
+                                    ➕ Yeni Kategori
+                                </button>
+                            </div>
+                            <select name="category_id" id="edit_category_id" class="form-control">
+                                <option value="">(Kategorisiz - Null)</option>
+                                @foreach ($instagramCategories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Takipçi Sayısı</label>
+                            <input type="text" name="follower_count" id="edit_follower_count" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-grid-3">
+                        <div class="form-group">
+                            <label class="form-label">Sektör / Niş</label>
+                            <input type="text" name="sector" id="edit_sector" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Mevcut Web Durumu</label>
+                            <input type="text" name="current_website" id="edit_current_website" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Öncelik Seviyesi *</label>
+                            <select name="priority" id="edit_priority" class="form-control" required>
+                                <option value="yuksek">🔥 Yüksek Öncelik</option>
+                                <option value="orta">⚡ Orta Öncelik</option>
+                                <option value="dusuk">Düşük Öncelik</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-3">
+                        <div class="form-group">
+                            <label class="form-label">İletişim / Outreach Durumu *</label>
+                            <select name="outreach_status" id="edit_outreach_status" class="form-control" required>
+                                <option value="incelenecek">🔍 İncelenecek</option>
+                                <option value="dm_atildi">✉ DM Atıldı</option>
+                                <option value="cevap_bekleniyor">⏳ Cevap Bekleniyor</option>
+                                <option value="gorusme">📞 Görüşme Yapılıyor</option>
+                                <option value="teklif_gonderildi">📑 Teklif Gönderildi</option>
+                                <option value="anlasildi">✓ Anlaşıldı</option>
+                                <option value="pasif">✕ Pasif / İlgilenmedi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Profil URL'si</label>
+                            <input type="text" name="profile_url" id="edit_profile_url" class="form-control" placeholder="https://instagram.com/...">
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Tespit Edilen Eksiklik / Satış Fırsatı *</label>
+                            <textarea name="problem_opportunity" id="edit_problem_opportunity" class="form-control" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Detaylı İnceleme & DM Notları</label>
+                            <textarea name="detailed_notes" id="edit_detailed_notes" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="closeEditInstagramModal()" style="background:none; border:1px solid var(--border); padding:10px 18px; border-radius:var(--radius); font-weight:600; cursor:pointer;">
+                        Vazgeç
+                    </button>
+                    <button type="submit" class="btn-submit-primary">
+                        ✓ Değişiklikleri Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         MODAL 2: QUICK CATEGORY CREATE (SAYFAYI YENİLEMEDEN AJAX KATEGORİ EKLE)
+         ==================================================================== -->
+    <div id="quickCategoryModal" class="modal-backdrop">
+        <div class="modal-dialog" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 style="font-size:1.05rem; font-weight:800; color:var(--text-heading); display:flex; align-items:center; gap:8px;">
+                    🏷️ Hızlı Kategori Ekle
+                </h3>
+                <button type="button" onclick="closeQuickCategoryModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+            </div>
+            <form id="quickCategoryForm" onsubmit="submitQuickCategory(event)">
+                <div class="modal-body">
+                    <div style="margin-bottom:18px;">
+                        <label class="form-label">Kategori Adı *</label>
+                        <input type="text" id="quickCatName" class="form-control" placeholder="Örn: Spor & Outdoor" required autocomplete="off">
+                        <div id="quickCatError" style="color:var(--red); font-size:0.8rem; margin-top:5px; display:none;"></div>
+                    </div>
+                    <div>
+                        <label class="form-label">Etiket Renk Teması</label>
+                        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px;">
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#ec4899" checked><span style="background:#ec4899;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#8b5cf6"><span style="background:#8b5cf6;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#f59e0b"><span style="background:#f59e0b;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#10b981"><span style="background:#10b981;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#06b6d4"><span style="background:#06b6d4;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#3b82f6"><span style="background:#3b82f6;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#ef4444"><span style="background:#ef4444;"></span></label>
+                            <label class="color-swatch-label"><input type="radio" name="quickCatColor" value="#64748b"><span style="background:#64748b;"></span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="closeQuickCategoryModal()" style="background:none; border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius); font-weight:600; cursor:pointer;">
+                        Vazgeç
+                    </button>
+                    <button type="submit" id="btnSubmitQuickCat" class="btn-submit-primary" style="padding:8px 18px;">
+                        ✓ Kaydet & Seç
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Scripts for Interactive Experience -->
@@ -1390,6 +1821,249 @@
                 }
             }
         }
+
+        // ==========================================
+        // INSTAGRAM CATEGORY & LIVE FILTER LOGIC
+        // ==========================================
+        let currentCategoryFilter = '';
+
+        function setCategoryFilter(catId, btn) {
+            currentCategoryFilter = catId;
+            
+            // Update pills active state
+            document.querySelectorAll('.cat-pill').forEach(el => el.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            
+            // Sync dropdown
+            const select = document.getElementById('instagramCategorySelectFilter');
+            if (select) select.value = catId;
+            
+            filterInstagramTable();
+        }
+
+        function syncCategoryDropdown(val) {
+            currentCategoryFilter = val;
+            
+            // Update pills active state
+            document.querySelectorAll('.cat-pill').forEach(el => {
+                const cat = el.getAttribute('data-cat-id');
+                if ((!val && !cat && el.textContent.includes('Tümü')) ||
+                    (val === '__null__' && el.textContent.includes('Kategorisiz')) ||
+                    (val && cat === val)) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+            
+            filterInstagramTable();
+        }
+
+        function filterInstagramTable() {
+            const searchInput = document.getElementById('instagramSearch');
+            const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const table = document.getElementById('instagramTable');
+            if (!table) return;
+            
+            const rows = table.querySelectorAll('tbody tr[data-instagram-row="true"]');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const catId = row.getAttribute('data-category-id') || '';
+                const isNullCat = (catId === '' || catId === 'null');
+                
+                // Category filter check
+                let matchesCategory = true;
+                if (currentCategoryFilter === '__null__') {
+                    matchesCategory = isNullCat;
+                } else if (currentCategoryFilter !== '') {
+                    matchesCategory = (catId === currentCategoryFilter);
+                }
+                
+                // Text search check (includes category name, username, notes, sector, etc.)
+                const rowText = row.textContent.toLowerCase();
+                const matchesSearch = !searchTerm || rowText.includes(searchTerm);
+                
+                if (matchesCategory && matchesSearch) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            const counterEl = document.getElementById('instagramFilteredCount');
+            if (counterEl) counterEl.textContent = visibleCount;
+        }
+
+        // ==========================================
+        // EDIT INSTAGRAM MODAL
+        // ==========================================
+        function openEditInstagramModal(lead) {
+            const modal = document.getElementById('editInstagramModal');
+            const form = document.getElementById('editInstagramForm');
+            if (!modal || !form) return;
+            
+            form.action = '/admin/instagram/' + lead.id;
+            
+            document.getElementById('editLeadUsernameTitle').textContent = lead.username;
+            document.getElementById('edit_username').value = lead.username || '';
+            document.getElementById('edit_category_id').value = lead.category_id || '';
+            document.getElementById('edit_follower_count').value = lead.follower_count || '';
+            document.getElementById('edit_sector').value = lead.sector || '';
+            document.getElementById('edit_current_website').value = lead.current_website || '';
+            document.getElementById('edit_priority').value = lead.priority || 'orta';
+            document.getElementById('edit_outreach_status').value = lead.outreach_status || 'incelenecek';
+            document.getElementById('edit_profile_url').value = lead.profile_url || '';
+            document.getElementById('edit_problem_opportunity').value = lead.problem_opportunity || '';
+            document.getElementById('edit_detailed_notes').value = lead.detailed_notes || '';
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeEditInstagramModal() {
+            const modal = document.getElementById('editInstagramModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // ==========================================
+        // QUICK CATEGORY MODAL (AJAX NO-REFRESH)
+        // ==========================================
+        let targetCategorySelectId = 'instagramAddCategorySelect';
+
+        function openQuickCategoryModal(targetSelectId) {
+            targetCategorySelectId = targetSelectId || 'instagramAddCategorySelect';
+            const modal = document.getElementById('quickCategoryModal');
+            const input = document.getElementById('quickCatName');
+            const err = document.getElementById('quickCatError');
+            if (err) err.style.display = 'none';
+            if (input) input.value = '';
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => input && input.focus(), 60);
+            }
+        }
+
+        function closeQuickCategoryModal() {
+            const modal = document.getElementById('quickCategoryModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        async function submitQuickCategory(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('quickCatName');
+            const name = nameInput.value.trim();
+            const colorInput = document.querySelector('input[name="quickCatColor"]:checked');
+            const color = colorInput ? colorInput.value : '#ec4899';
+            const errEl = document.getElementById('quickCatError');
+            const submitBtn = document.getElementById('btnSubmitQuickCat');
+            
+            if (!name) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Kaydediliyor...';
+            if (errEl) errEl.style.display = 'none';
+            
+            try {
+                const response = await fetch("{{ route('admin.instagram.categories.store') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ name: name, color: color })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    const errorMsg = data.errors?.name ? data.errors.name[0] : (data.message || 'Kategori eklenemedi.');
+                    if (errEl) {
+                        errEl.textContent = errorMsg;
+                        errEl.style.display = 'block';
+                    }
+                    return;
+                }
+                
+                const newCat = data.category;
+                
+                // Add to all selects
+                const selectIds = ['instagramAddCategorySelect', 'edit_category_id', 'instagramCategorySelectFilter'];
+                selectIds.forEach(id => {
+                    const sel = document.getElementById(id);
+                    if (sel) {
+                        const opt = document.createElement('option');
+                        opt.value = newCat.id;
+                        opt.textContent = newCat.name;
+                        sel.appendChild(opt);
+                    }
+                });
+                
+                // Select in current target dropdown
+                const targetSel = document.getElementById(targetCategorySelectId);
+                if (targetSel) {
+                    targetSel.value = newCat.id;
+                }
+                
+                // Append to category pills container
+                const pillsContainer = document.getElementById('categoryPillsContainer');
+                if (pillsContainer) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'cat-pill';
+                    btn.setAttribute('data-cat-id', newCat.id);
+                    btn.onclick = function() { setCategoryFilter(newCat.id, this); };
+                    btn.innerHTML = `<span style="width:8px; height:8px; border-radius:50%; background:${newCat.color}; display:inline-block;"></span> ${newCat.name} <span class="cat-pill-count">0</span>`;
+                    pillsContainer.appendChild(btn);
+                }
+                
+                showToast('✓ "' + newCat.name + '" kategorisi oluşturuldu ve seçildi!');
+                closeQuickCategoryModal();
+            } catch (error) {
+                if (errEl) {
+                    errEl.textContent = 'Bir bağlantı hatası oluştu.';
+                    errEl.style.display = 'block';
+                }
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '✓ Kaydet & Seç';
+            }
+        }
+
+        // ==========================================
+        // TOAST NOTIFICATIONS
+        // ==========================================
+        function showToast(message) {
+            let toast = document.getElementById('adminLiveToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'adminLiveToast';
+                toast.className = 'admin-toast';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.style.display = 'flex';
+            clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3500);
+        }
+
+        // Close modals on Escape key or clicking outside dialog
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeEditInstagramModal();
+                closeQuickCategoryModal();
+            }
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-backdrop')) {
+                closeEditInstagramModal();
+                closeQuickCategoryModal();
+            }
+        });
     </script>
 </body>
 </html>
